@@ -1,0 +1,29 @@
+
+### sign up
+POST https://34.69.190.98/api/users/signup
+Content-Type: application/json
+
+{
+  "email": "test+19@yo.com",
+  "password": "Strong_Password1234!"
+}
+
+### sign in
+POST https://ticketing.dev/api/users/signin
+Content-Type: application/json
+
+{
+  "email": "test+19@yo.com",
+  "password": "Strong_Password1234!"
+}
+
+### current user
+GET https://ticketing.dev/api/users/currentuser
+Accept: application/json
+
+
+### sign out
+POST https://ticketing.dev/api/users/signout
+Content-Type: application/json
+
+{}

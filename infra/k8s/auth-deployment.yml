@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - image: us.gcr.io/ticketing-udemy-steves-course/auth
+          imagePullPolicy: Always
+          name: auth
+          env:
+            - name: JWT_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_SECRET
+            - name: MONGO_URI
+              value: MONGO_URI=mongodb://auth-mongo-svc:27017/auth
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: auth
+  ports:
+    - name: auth
+      protocol: TCP
+      targetPort: 3000 # this is the one that the container exposes, in other words the one we run the app at from the container.
+      port: 3000 # this is the one that the service exposes

@@ -1,0 +1,33 @@
+apiVersion: skaffold/v4beta6
+kind: Config
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+build:
+  googleCloudBuild:
+    projectId: ticketing-udemy-steves-course
+  artifacts:
+    - image: us.gcr.io/ticketing-udemy-steves-course/auth
+      context: ./microservices/auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: us.gcr.io/ticketing-udemy-steves-course/tickets
+      context: ./microservices/tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+    - image: us.gcr.io/ticketing-udemy-steves-course/client
+      context: ./client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
