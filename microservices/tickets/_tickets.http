@@ -1,29 +1,28 @@
-
-### sign up
-POST https://34.69.190.98/api/users/signup
-Content-Type: application/json
-
-{
-  "email": "test+19@yo.com",
-  "password": "Strong_Password1234!"
-}
-
-### sign in
-POST https://ticketing.dev/api/users/signin
-Content-Type: application/json
-
-{
-  "email": "test+19@yo.com",
-  "password": "Strong_Password1234!"
-}
-
-### current user
-GET https://ticketing.dev/api/users/currentuser
+### get all tickets
+GET https://ticketing.dev/api/tickets
 Accept: application/json
 
 
-### sign out
-POST https://ticketing.dev/api/users/signout
+### create
+POST https://ticketing.dev/api/tickets
 Content-Type: application/json
 
-{}
+{
+  "title": "TEST TITLE",
+  "price": 100
+}
+
+
+### update ticket
+PUT https://ticketing.dev/api/tickets/64d8e9532b0767b3c2d1618f
+Content-Type: application/json
+
+{
+  "title": "Hello this is me",
+  "price": "2004"
+}
+
+
+### get single ticket
+GET https://ticketing.dev/api/tickets/64d8e9532b0767b3c2d1618f
+Accept: application/json

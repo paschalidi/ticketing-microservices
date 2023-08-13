@@ -14,7 +14,6 @@ spec:
     spec:
       containers:
         - image: us.gcr.io/ticketing-udemy-steves-course/auth
-          imagePullPolicy: Always
           name: auth
           env:
             - name: JWT_SECRET_KEY
@@ -23,7 +22,7 @@ spec:
                   name: jwt-secret
                   key: JWT_SECRET
             - name: MONGO_URI
-              value: MONGO_URI=mongodb://auth-mongo-svc:27017/auth
+              value: mongodb://auth-mongo-svc:27017/auth
 ---
 apiVersion: v1
 kind: Service

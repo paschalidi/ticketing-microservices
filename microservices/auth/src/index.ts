@@ -11,6 +11,8 @@ const start = async () => {
     }
 
     try {
+        logger.debug(process.env.MONGO_URI);
+
         await mongoose.connect(process.env.MONGO_URI)
         logger.info('Connected to MongoDB for auth!');
 

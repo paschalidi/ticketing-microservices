@@ -1,6 +1,6 @@
 
 ### sign up
-POST https://34.69.190.98/api/users/signup
+POST https://ticketing.dev/api/users/signup
 Content-Type: application/json
 
 {
