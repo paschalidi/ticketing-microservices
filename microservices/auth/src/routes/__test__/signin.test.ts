@@ -1,7 +1,7 @@
 import request from 'supertest';
 import {app} from "../../app";
 
-describe('User Sign in', () => {
+describe('Ticket Sign in', () => {
 
     it('should allow user to sign in', async () => {
         await request(app)

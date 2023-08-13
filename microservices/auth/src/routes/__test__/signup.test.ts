@@ -1,7 +1,7 @@
 import request from 'supertest';
 import {app} from "../../app";
 
-describe('User Sign up', () => {
+describe('Ticket Sign up', () => {
 
     it('should create a new user', async () => {
         return request(app)

@@ -2,21 +2,21 @@ import mongoose from "mongoose";
 import {PasswordManager} from "../utils/password-manager";
 
 //an interface that describes the properties
-//that are required to create a new User. INPUT
+//that are required to create a new Ticket. INPUT
 interface UserAttrs {
     email: string;
     password: string;
 }
 
 // an interface that describes the properties
-// that a User Document has. This after the user is created. OUTPUT
+// that a Ticket Document has. This after the user is created. OUTPUT
 interface UserDoc extends mongoose.Document {
     email: string;
     password: string;
 }
 
 // an interface that describes the properties
-// that a User Model has
+// that a Ticket Model has
 interface UserModel extends mongoose.Model<UserDoc> {
     build(attrs: UserAttrs): UserDoc
 }

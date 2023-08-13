@@ -2,7 +2,11 @@ import express from 'express';
 import 'express-async-errors';
 import cookieSession from 'cookie-session';
 import {json} from "body-parser";
-import {errorHandler, NotFoundError} from "@cpticketing/common-utils";
+import {errorHandler, NotFoundError, currentUser} from "@cpticketing/common-utils";
+import {createTicketRouter} from "./routes/create";
+import {retrieveOneTicketRouter} from "./routes/retrieveOne";
+import {retrieveAllTicketsRouter} from "./routes/retrieveAll";
+import {updateOneTicketRouter} from "./routes/updateOne";
 
 const app = express()
 // this is because we have ingress nginx as a proxy.
@@ -15,6 +19,12 @@ app.use(cookieSession({
     secure: process.env.NODE_ENV !== 'test', // have it `true` for every environment except test
 
 }))
+app.use(currentUser)
+
+app.use(createTicketRouter)
+app.use(retrieveOneTicketRouter)
+app.use(retrieveAllTicketsRouter)
+app.use(updateOneTicketRouter)
 
 app.get('*', async () => {
     throw new NotFoundError()

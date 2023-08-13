@@ -1,7 +1,7 @@
 import request from 'supertest';
 import {app} from "../../app";
 
-describe('Current User', () => {
+describe('Current Ticket', () => {
     it('should have details in the response about the current user', async () => {
         const cookie = await global.signin();
 

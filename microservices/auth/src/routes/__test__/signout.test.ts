@@ -1,7 +1,7 @@
 import request from 'supertest';
 import {app} from "../../app";
 
-describe('User Sign out', () => {
+describe('Ticket Sign out', () => {
     it('should sign out user', async () => {
         await request(app)
             .post('/api/users/signup')
