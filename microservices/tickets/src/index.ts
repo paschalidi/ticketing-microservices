@@ -13,7 +13,6 @@ const start = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI)
         logger.info('Connected to MongoDB for tickets!');
-
     } catch (err) {
         logger.error(err);
     }

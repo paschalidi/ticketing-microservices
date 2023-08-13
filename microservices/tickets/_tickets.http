@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "title": "Hello this is me",
-  "price": "2004"
+  "price": "0.1"
 }
 
 
