@@ -14,7 +14,7 @@ Content-Type: application/json
 
 
 ### update ticket
-PUT https://ticketing.dev/api/tickets/64d8e9532b0767b3c2d1618f
+PUT https://ticketing.dev/api/tickets/64dea6cdcde7535a32a9b0d4
 Content-Type: application/json
 
 {
