@@ -23,6 +23,14 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: us.gcr.io/ticketing-udemy-steves-course/orders
+      context: ./microservices/orders
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
     - image: us.gcr.io/ticketing-udemy-steves-course/client
       context: ./client
       docker:

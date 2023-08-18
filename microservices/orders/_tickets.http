@@ -1,0 +1,28 @@
+### get all tickets
+GET https://ticketing.dev/api/tickets
+Accept: application/json
+
+
+### create
+POST https://ticketing.dev/api/tickets
+Content-Type: application/json
+
+{
+  "title": "TEST TITLE",
+  "price": 100
+}
+
+
+### update ticket
+PUT https://ticketing.dev/api/tickets/64dea6cdcde7535a32a9b0d4
+Content-Type: application/json
+
+{
+  "title": "Hello this is me",
+  "price": "0.1"
+}
+
+
+### get single ticket
+GET https://ticketing.dev/api/tickets/64d8e9532b0767b3c2d1618f
+Accept: application/json
