@@ -1,6 +1,6 @@
 import express, {Request, Response} from "express";
 import {NotFoundError} from "@cpticketing/common-utils";
-import {Order} from "../models/Order";
+import {Order} from "../models/order";
 
 const router = express.Router();
 

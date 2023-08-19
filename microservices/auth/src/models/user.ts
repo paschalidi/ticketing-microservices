@@ -9,7 +9,8 @@ interface UserAttrs {
 }
 
 // an interface that describes the properties
-// that a Ticket Document has. This after the user is created. OUTPUT
+// that a Ticket Document has. This after the user is created and saved in the database.
+// the difference is that we could add few extra properties to the document if our use case requires it. O
 interface UserDoc extends mongoose.Document {
     email: string;
     password: string;

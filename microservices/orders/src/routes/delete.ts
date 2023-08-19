@@ -1,6 +1,6 @@
 import express, {Request, Response} from "express";
 import {NotAuthorizedError, NotFoundError, requireAuth, validateRequest} from "@cpticketing/common-utils";
-import {Order} from "../models/Order";
+import {Order} from "../models/order";
 import {body} from "express-validator";
 import {natsWrapper} from "../nats-wrapper";
 
@@ -15,4 +15,4 @@ router.delete(
 
     })
 
-export {router as deleteOneOrderRouter};
+export {router as deleteOrderRouter};
