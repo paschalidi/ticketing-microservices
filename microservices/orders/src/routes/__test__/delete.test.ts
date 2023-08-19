@@ -19,7 +19,6 @@ describe('Changes the status of the ticket when the user request to delete it', 
     const userId = new mongoose.Types.ObjectId().toHexString();
     const {body: order} = await createOrder({userId, ticketTitle: 'concert', ticketPrice: 2009})
 
-    console.log('order', order)
     return request(app)
       .delete(`/api/order/${order.id}`)
       .set('Cookie', global.signin({userId: new mongoose.Types.ObjectId().toHexString()}))
