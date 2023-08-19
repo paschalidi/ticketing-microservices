@@ -15,8 +15,8 @@ const app = express()
 app.set('trust proxy', 1)
 app.use(json())
 app.use(cookieSession({
-    signed: false,
-    secure: process.env.NODE_ENV !== 'test', // have it `true` for every environment except test
+  signed: false,
+  secure: process.env.NODE_ENV !== 'test', // have it `true` for every environment except test
 
 }))
 app.use(currentUserRouter)
@@ -25,7 +25,7 @@ app.use(signOutRouter)
 app.use(signUpRouter)
 
 app.get('*', async () => {
-    throw new NotFoundError()
+  throw new NotFoundError()
 })
 
 app.use(errorHandler)

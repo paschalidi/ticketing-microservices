@@ -2,7 +2,7 @@ import express from 'express';
 import 'express-async-errors';
 import cookieSession from 'cookie-session';
 import {json} from "body-parser";
-import {errorHandler, NotFoundError, currentUser} from "@cpticketing/common-utils";
+import {currentUser, errorHandler, NotFoundError} from "@cpticketing/common-utils";
 import {createTicketRouter} from "./routes/create";
 import {retrieveOneTicketRouter} from "./routes/retrieveOne";
 import {retrieveAllTicketsRouter} from "./routes/retrieveAll";
@@ -15,8 +15,8 @@ const app = express()
 app.set('trust proxy', 1)
 app.use(json())
 app.use(cookieSession({
-    signed: false,
-    secure: process.env.NODE_ENV !== 'test', // have it `true` for every environment except test
+  signed: false,
+  secure: process.env.NODE_ENV !== 'test', // have it `true` for every environment except test
 
 }))
 app.use(currentUser)
@@ -27,7 +27,7 @@ app.use(retrieveAllTicketsRouter)
 app.use(updateOneTicketRouter)
 
 app.get('*', async () => {
-    throw new NotFoundError()
+  throw new NotFoundError()
 })
 
 app.use(errorHandler)
