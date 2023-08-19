@@ -13,7 +13,7 @@ spec:
         app: tickets
     spec:
       containers:
-        - image: us.gcr.io/ticketing-udemy-steves-course/tickets
+        - image: us.gcr.io/practical-theme-396423/tickets
           name: tickets
           env:
             - name: JWT_SECRET_KEY

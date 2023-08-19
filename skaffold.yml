@@ -5,9 +5,9 @@ manifests:
     - ./infra/k8s/*
 build:
   googleCloudBuild:
-    projectId: ticketing-udemy-steves-course
+    projectId: practical-theme-396423
   artifacts:
-    - image: us.gcr.io/ticketing-udemy-steves-course/auth
+    - image: us.gcr.io/practical-theme-396423/auth
       context: ./microservices/auth
       docker:
         dockerfile: Dockerfile
@@ -15,7 +15,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-udemy-steves-course/tickets
+    - image: us.gcr.io/practical-theme-396423/tickets
       context: ./microservices/tickets
       docker:
         dockerfile: Dockerfile
@@ -23,7 +23,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-udemy-steves-course/orders
+    - image: us.gcr.io/practical-theme-396423/orders
       context: ./microservices/orders
       docker:
         dockerfile: Dockerfile
@@ -31,7 +31,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-udemy-steves-course/client
+    - image: us.gcr.io/practical-theme-396423/client
       context: ./client
       docker:
         dockerfile: Dockerfile

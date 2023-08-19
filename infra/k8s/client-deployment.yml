@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/ticketing-udemy-steves-course/client
+          image: us.gcr.io/practical-theme-396423/client
           imagePullPolicy: Always
 ---
 apiVersion: v1

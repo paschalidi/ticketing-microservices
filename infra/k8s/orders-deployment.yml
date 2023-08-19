@@ -13,7 +13,7 @@ spec:
         app: orders
     spec:
       containers:
-        - image: us.gcr.io/ticketing-udemy-steves-course/orders
+        - image: us.gcr.io/practical-theme-396423/orders
           name: orders
           env:
             - name: JWT_SECRET_KEY
