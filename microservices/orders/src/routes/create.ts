@@ -42,6 +42,8 @@ router.post(
       expiredAt: expiration
     })
     await order.save();
+
+    // TODO add the event publishing logic here
     res.status(201).send(order);
   })
 

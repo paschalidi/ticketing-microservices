@@ -1,0 +1,8 @@
+### sign up
+POST https://ticketing.dev/api/orders/
+Content-Type: application/json
+
+{
+  "email": "test+19@yo.com",
+  "password": "Strong_Password1234!"
+}

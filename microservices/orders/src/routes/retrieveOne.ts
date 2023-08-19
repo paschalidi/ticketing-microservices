@@ -1,19 +1,31 @@
 import express, {Request, Response} from "express";
-import {NotFoundError} from "@cpticketing/common-utils";
+import {NotAuthorizedError, NotFoundError, validateRequest} from "@cpticketing/common-utils";
 import {Order} from "../models/order";
+import {param} from "express-validator";
 
 const router = express.Router();
 
 router.get(
-    "/api/orders/:orderId",
-    async (req: Request, res: Response) => {
-        const ticket = await Order.findById(req.params.orderId);
+  "/api/orders/:orderId",
+  [
+    param('orderId')
+      .isMongoId()
+      .withMessage('orderId must be a valid mongoId')
+  ],
+  validateRequest,
+  async (req: Request, res: Response) => {
+    const {orderId} = req.params
+    const order = await Order
+      .findById(orderId)
+      .populate('ticket');
+    if (!order) {
+      throw new NotFoundError();
+    }
+    if (order.userId !== req.currentUser!.id) {
+      throw new NotAuthorizedError();
+    }
 
-        if (!ticket) {
-            throw new NotFoundError();
-        }
-
-        res.send(ticket);
-    })
+    res.send(order);
+  })
 
 export {router as retrieveOneOrderRouter};
