@@ -3,4 +3,4 @@
 **/.next
 **/.build
 **/.idea
-**/coverage/*
+**/coverage

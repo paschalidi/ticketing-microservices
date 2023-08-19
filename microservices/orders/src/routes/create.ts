@@ -3,6 +3,8 @@ import {BadRequestError, NotFoundError, OrderStatus, requireAuth, validateReques
 import {Ticket} from "../models/ticket";
 import {Order} from "../models/order";
 import {body} from "express-validator";
+import {OrderCreatedPublisher} from "../events/publishers/order-created-publisher";
+import {natsWrapper} from "../nats-wrapper";
 
 const router = express.Router();
 
@@ -43,7 +45,18 @@ router.post(
     })
     await order.save();
 
-    // TODO add the event publishing logic here
+    await new OrderCreatedPublisher(natsWrapper.client)
+      .publish({
+        status: order.status,
+        id: order.id,
+        userId: order.userId,
+        ticket: {
+          id: order.ticket.id,
+          price: order.ticket.price,
+        },
+        expiresAt: order.expiredAt.toISOString(),
+      })
+
     res.status(201).send(order);
   })
 

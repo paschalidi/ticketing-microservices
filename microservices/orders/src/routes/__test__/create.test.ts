@@ -3,6 +3,9 @@ import {app} from "../../app";
 import {Order, OrderStatus} from "../../models/order";
 import {Ticket} from "../../models/ticket";
 import mongoose from "mongoose";
+import {createOrder} from "./utils";
+import {natsWrapper} from "../../nats-wrapper";
+import {Subjects} from "@cpticketing/common-utils";
 
 describe('New order creation', () => {
   it('should return an error if the ticker does not exist', async () => {
@@ -48,5 +51,20 @@ describe('New order creation', () => {
       .send({ticketId: ticket.id})
       .expect(201)
   });
-  it.todo('emits an order created event');
+
+  it('emits an order created event', async () => {
+    const userId = new mongoose.Types.ObjectId().toHexString();
+     await createOrder({
+      ticketTitle: 'concert',
+      ticketPrice: 2009,
+      userId
+    })
+
+    expect(natsWrapper.client.publish)
+      .toHaveBeenCalledWith(
+        Subjects.OrderCreated,
+        expect.any(String),
+        expect.any(Function)
+      )
+  });
 });
