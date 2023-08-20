@@ -1,6 +1,7 @@
 import {Ticket} from "../../models/ticket";
 import request from "supertest";
 import {app} from "../../app";
+import mongoose from "mongoose";
 
 export const createOrder = async ({userId, ticketTitle, ticketPrice}: {
   ticketTitle: string,
@@ -8,6 +9,7 @@ export const createOrder = async ({userId, ticketTitle, ticketPrice}: {
   userId: string
 }) => {
   const ticket = Ticket.build({
+    id: new mongoose.Types.ObjectId().toHexString(),
     title: ticketTitle,
     price: ticketPrice
   })

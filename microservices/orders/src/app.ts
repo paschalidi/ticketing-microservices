@@ -12,7 +12,7 @@ const app = express()
 // this is because we have ingress nginx as a proxy.
 // In other words it tells express to trust traffic
 // as being secure even though it is coming from a proxy
-app.set('trust proxy', 1)
+app.set('trust proxy', true)
 app.use(json())
 app.use(cookieSession({
   signed: false,

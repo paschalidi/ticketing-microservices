@@ -1,20 +1,19 @@
 ### get all tickets
-GET https://ticketing.dev/api/tickets
+GET https://ticketing.dev/api/orders
 Accept: application/json
 
 
 ### create
-POST https://ticketing.dev/api/tickets
+POST https://ticketing.dev/api/orders
 Content-Type: application/json
 
 {
-  "title": "TEST TITLE",
-  "price": 100
+  "ticketId": "64e25576b6513fb17cf8d163"
 }
 
 
 ### update ticket
-PUT https://ticketing.dev/api/tickets/64dea6cdcde7535a32a9b0d4
+PUT https://ticketing.dev/api/tickets/64e25576b6513fb17cf8d163
 Content-Type: application/json
 
 {

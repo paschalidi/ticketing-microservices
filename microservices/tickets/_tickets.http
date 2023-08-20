@@ -14,12 +14,12 @@ Content-Type: application/json
 
 
 ### update ticket
-PUT https://ticketing.dev/api/tickets/64dea6cdcde7535a32a9b0d4
+PUT https://ticketing.dev/api/tickets/64e281d586fdbb2e5d0a9e35
 Content-Type: application/json
 
 {
-  "title": "Hello this is me",
-  "price": "0.1"
+  "title": "Hello this is mememe",
+  "price": "0.3"
 }
 
 

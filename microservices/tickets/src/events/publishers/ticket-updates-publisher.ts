@@ -1,5 +1,5 @@
-import {Publisher, Subjects, TicketUpdatedEvent} from "@cpticketing/common-utils";
+import {EventTicketUpdated, Publisher, Subjects} from "@cpticketing/common-utils";
 
-export class TicketUpdatedPublisher extends Publisher<TicketUpdatedEvent> {
+export class TicketUpdatedPublisher extends Publisher<EventTicketUpdated> {
   readonly subject = Subjects.TicketUpdated;
 }

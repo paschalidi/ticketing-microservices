@@ -16,6 +16,7 @@ interface OrderDoc extends mongoose.Document {
   status: OrderStatus;
   expiredAt: Date;
   ticket: TicketDoc
+  version: number;
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
@@ -50,6 +51,12 @@ const orderSchema = new mongoose.Schema({
     }
   })
 
+
+orderSchema.set('versionKey', 'version');
+orderSchema.pre('save', function (next) {
+  this.increment(); // Increment the version if the document has been modified
+  next();
+});
 
 // we are getting a custom function build in to the model
 orderSchema.statics.build = (attrs: OrderAttrs) => {

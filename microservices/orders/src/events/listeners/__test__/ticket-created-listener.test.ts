@@ -34,7 +34,9 @@ describe('Ticket Created Listener', () => {
     expect(ticket!.version).toEqual(data.version);
 
   });
-  it('should ack the message', () => {
-
+  it('should ack the message', async () => {
+    const {listener, data, msg} = await setup();
+    await listener.onMessage(data, msg);
+    expect(msg.ack).toHaveBeenCalledTimes(1);
   });
 })
