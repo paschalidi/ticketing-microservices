@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/practical-theme-396423/client
-          imagePullPolicy: Always
+          image: ticketing/client
 ---
 apiVersion: v1
 kind: Service

@@ -13,7 +13,7 @@ spec:
         app: auth
     spec:
       containers:
-        - image: us.gcr.io/practical-theme-396423/auth
+        - image: ticketing/auth
           name: auth
           env:
             - name: JWT_SECRET_KEY

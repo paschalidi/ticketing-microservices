@@ -4,10 +4,10 @@ manifests:
   rawYaml:
     - ./infra/k8s/*
 build:
-  googleCloudBuild:
-    projectId: practical-theme-396423
+  local:
+    push: false
   artifacts:
-    - image: us.gcr.io/practical-theme-396423/auth
+    - image: ticketing/auth
       context: ./microservices/auth
       docker:
         dockerfile: Dockerfile
@@ -15,7 +15,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/practical-theme-396423/tickets
+    - image: ticketing/tickets
       context: ./microservices/tickets
       docker:
         dockerfile: Dockerfile
@@ -23,7 +23,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/practical-theme-396423/orders
+    - image: ticketing/orders
       context: ./microservices/orders
       docker:
         dockerfile: Dockerfile
@@ -31,7 +31,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/practical-theme-396423/client
+    - image: ticketing/client
       context: ./client
       docker:
         dockerfile: Dockerfile

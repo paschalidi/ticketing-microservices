@@ -28,7 +28,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: order-svc
+                name: orders-svc
                 port:
                   number: 3000
           - path: /?(.*)
