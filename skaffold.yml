@@ -39,3 +39,11 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
+    - image: ticketing/expiration
+      context: ./microservices/expiration
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
