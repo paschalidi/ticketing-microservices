@@ -744,10 +744,10 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@cpticketing/common-utils@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@cpticketing/common-utils/-/common-utils-1.0.22.tgz#a44a743778e5086273b420830b522d61f3068c4f"
-  integrity sha512-c888fhSG5fdH/UY+U/R5Cj5qzwrMalMaFAd+hVSHpLu0WgtiQG7U3n4Cfm1zIZ9d2II6khIcpKveMBDxsPb5sA==
+"@cpticketing/common-utils@^1.0.23":
+  version "1.0.23"
+  resolved "https://registry.yarnpkg.com/@cpticketing/common-utils/-/common-utils-1.0.23.tgz#ccfaafd67157b596a7bd1f5491255fee8fe1b99b"
+  integrity sha512-AwrEbQGHt5JQiAcculGhs8cSBSmJvGKbDaDN+uRuShKNdJYOofb3iyIO4C0Y78K0i8fELY6numczaRSkX2B/2A==
   dependencies:
     "@types/cookie-session" "^2.0.44"
     "@types/express" "^4.17.17"

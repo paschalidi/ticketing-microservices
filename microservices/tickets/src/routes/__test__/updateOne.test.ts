@@ -3,6 +3,7 @@ import {app} from "../../app";
 import mongoose from "mongoose";
 import {natsWrapper} from "../../nats-wrapper";
 import {Subjects} from "@cpticketing/common-utils";
+import {Ticket} from "../../models/ticket";
 
 describe('Update info from one ticket', () => {
   const ticketId = new mongoose.Types.ObjectId().toHexString();
@@ -92,7 +93,7 @@ describe('Update info from one ticket', () => {
   });
 
 
-  it('should call publisher when one events is updates', async () => {
+  it('should call publisher when one events is updated', async () => {
     // create new ticket with user
     const response = await request(app)
       .post('/api/tickets')
@@ -101,7 +102,7 @@ describe('Update info from one ticket', () => {
       .expect(201);
     expect(natsWrapper.client.publish).toHaveBeenCalledTimes(1)
 
-    const updatedTicket = await request(app)
+    await request(app)
       .put(`/api/tickets/${response.body.id}`)
       .set('Cookie', global.signin())
       .send({title: "UPDATED", price: 123123})
@@ -121,5 +122,25 @@ describe('Update info from one ticket', () => {
         expect.any(String),
         expect.any(Function)
       )
+  });
+
+  it('should throw a 409 when a ticket is ', async () => {
+    // create new ticket with user
+    const userId = new mongoose.Types.ObjectId().toHexString()
+    const response = await request(app)
+      .post('/api/tickets')
+      .set('Cookie', global.signin({userId}))
+      .send({title: 'Original price title', price: 1000})
+      .expect(201);
+
+    const ticket = await Ticket.findById(response.body.id)
+    ticket!.set({orderId: new mongoose.Types.ObjectId().toHexString()})
+    await ticket!.save()
+
+    const updatedTicket = await request(app)
+      .put(`/api/tickets/${response.body.id}`)
+      .set('Cookie', global.signin({userId}))
+      .send({title: "UPDATED", price: 123123})
+      .expect(409)
   });
 });
