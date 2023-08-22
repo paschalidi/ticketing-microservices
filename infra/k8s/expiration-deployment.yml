@@ -13,16 +13,16 @@ spec:
         app: expiration
     spec:
       containers:
-        - image: ticketing/expiration
-          name: expiration
+        - name: expiration
+          image: ticketing/expiration
           env:
-            - name: REDIS_HOST
-              value: expiration-redis-svc
-            - name: NATS_URL
-              value: http://nats-svc:4222
-            - name: NATS_CLUSTER_ID
-              value: ticketing
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-svc:4222'
+            - name: NATS_CLUSTER_ID
+              value: ticketing
+            - name: REDIS_HOST
+              value: expiration-redis-svc

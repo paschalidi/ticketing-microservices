@@ -21,11 +21,10 @@ kind: Service
 metadata:
   name: expiration-redis-svc
 spec:
-  type: ClusterIP
   selector:
     app: expiration-redis
   ports:
     - name: db
       protocol: TCP
-      targetPort: 6349
-      port: 6349
+      port: 6379
+      targetPort: 6379
