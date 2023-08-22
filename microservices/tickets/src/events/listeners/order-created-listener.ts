@@ -3,13 +3,14 @@ import {Listener} from "@cpticketing/common-utils/build/events/base-listener";
 import {queueGroupName} from "./queue-group-name";
 import {Ticket} from "../../models/ticket";
 import {TicketUpdatedPublisher} from "../publishers/ticket-updated-publisher";
+import {Message} from "node-nats-streaming";
 
 export class OrderCreatedListener extends Listener<EventOrderCreated> {
   readonly subject = Subjects.OrderCreated;
 
   queueGroupName = queueGroupName;
 
-  async onMessage(data: EventOrderCreated["data"], msg: any) {
+  async onMessage(data: EventOrderCreated["data"], msg: Message) {
     const ticket = await Ticket.findById(data.ticket.id);
     if (!ticket) {
       throw new Error('Ticket not found')
