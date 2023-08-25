@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
   "title": "TEST TITLE",
-  "price": 100
+  "price": 15
 }
 
 

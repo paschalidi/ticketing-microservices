@@ -8,20 +8,6 @@ POST https://ticketing.dev/api/orders
 Content-Type: application/json
 
 {
-  "ticketId": "64e53967d6ff5be1882db561"
+  "ticketId": "64e93554bbc7c9489de30944"
 }
 
-
-### update ticket
-PUT https://ticketing.dev/api/tickets/64e25576b6513fb17cf8d163
-Content-Type: application/json
-
-{
-  "title": "Hello this is me",
-  "price": "0.1"
-}
-
-
-### get single ticket
-GET https://ticketing.dev/api/tickets/64d8e9532b0767b3c2d1618f
-Accept: application/json
