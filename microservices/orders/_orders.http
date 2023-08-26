@@ -8,6 +8,6 @@ POST https://ticketing.dev/api/orders
 Content-Type: application/json
 
 {
-  "ticketId": "64e93554bbc7c9489de30944"
+  "ticketId": "64e93c04ee77b82fa361271c"
 }
 
